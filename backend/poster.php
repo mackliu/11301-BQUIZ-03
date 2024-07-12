@@ -37,7 +37,7 @@
                         <img src="./images/<?= $row['img']; ?>" alt="">
                     </div>
                     <div>
-                        <input type="text" name="name" value="<?= $row['name']; ?>">
+                        <input type="text" name="name[]" value="<?= $row['name']; ?>">
                     </div>
                     <div>
                         <button type="button">往上</button>
@@ -47,9 +47,9 @@
                         <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1) ? 'checked' : ''; ?>>顯示
                         <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">刪除
                         <select name="ani[]">
-                            <option value="1">淡入淡出</option>
-                            <option value="2">縮放</option>
-                            <option value="3">滑入滑出</option>
+                            <option value="1" <?= ($row['ani'] == 1) ? 'selected' : ''; ?>>淡入淡出</option>
+                            <option value="2" <?= ($row['ani'] == 2) ? 'selected' : ''; ?>>縮放</option>
+                            <option value="3" <?= ($row['ani'] == 3) ? 'selected' : ''; ?>>滑入滑出</option>
                         </select>
                         <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
                     </div>
