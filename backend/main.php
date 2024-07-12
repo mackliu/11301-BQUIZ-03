@@ -5,12 +5,20 @@ if (isset($_SESSION['login'])) {
     <div class="ct a rb" style="position:relative; width:101.5%; left:-1%; padding:3px; top:-9px;">
         <a href="?do=tit">網站標題管理</a>|
         <a href="?do=go">動態文字管理</a>|
-        <a href="?do=trailer">預告片海報管理</a>|
+        <a href="?do=poster">預告片海報管理</a>|
         <a href="?do=movie">院線片管理</a>|
         <a href="?do=order">電影訂票管理</a>
     </div>
-    <div class="rb tab">
-        <h2 class="ct">請選擇所需功能</h2>
+    <div class="rb tab" style="width:95%">
+        <?php
+        $do = $_GET['do'] ?? '';
+        $file = "backend/{$do}.php";
+        if (file_exists($file)) {
+            include $file;
+        } else {
+            echo "<h2 class='ct'>請選擇所需功能</h2>";
+        }
+        ?>
     </div>
 
 <?php
