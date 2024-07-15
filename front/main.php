@@ -3,10 +3,18 @@
     <div class="rb tab" style="width:95%;">
         <div id="posters">
             <div class="lists">
-                <div class='poster'>
-                    <img src="./images/03A07.jpg">
-                </div>
-                <div class='name'>預告片1</div>
+                <?php
+                $posters = $Poster->all(['sh' => 1], " Order By rank");
+                foreach ($posters as $poster) {
+                ?>
+                    <div class='poster'>
+                        <img src="./images/<?= $poster['img']; ?>">
+                        <div class='name'><?= $poster['name']; ?></div>
+                    </div>
+                <?php
+
+                }
+                ?>
             </div>
             <div class="controls">
                 <div class="control">
@@ -25,6 +33,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(".poster").eq(0).show()
+
+    $(".poster").eq(0).fadeOut(3000, () => {
+        $(".poster").eq(1).fadeIn(3000)
+    })
+</script>
+
+
+
 <div class="half">
     <h1>院線片清單</h1>
     <div class="rb tab" style="width:95%;">

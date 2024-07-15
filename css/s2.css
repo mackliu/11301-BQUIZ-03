@@ -9,21 +9,25 @@
 }
 
 #posters .lists {
+	width:210px;
 	height: 280px;
+	margin:auto;
 /* 	background:white; */
 	position: relative;
 	overflow: hidden;
 }
 .lists .poster{
 	width:210px;
-	height:260px;
+	height:280px;
 	margin:auto;
+	position:absolute;
+	display: none;
 
 }
 
 .lists .poster img{
 	width:100%;
-	height:100%;
+	height:260px;
 }
 
 .lists .name{
@@ -62,8 +66,11 @@
 	width:320px;
 	height:100px;
 	display:flex;
+	position: relative;
+	overflow: hidden;
 }
 .btns .btn{
 	width:80px;
 	height:100px;
+	position: relative;
 }
