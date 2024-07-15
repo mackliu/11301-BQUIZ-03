@@ -84,22 +84,26 @@
 
     }
 
-
+    let page = 0;
     $(".btn-left,.btn-right").on("click", function() {
-        console.log()
+
         let direction = $(this).attr('class').split("-")[1]
         switch (direction) {
             case 'left':
-
+                if ((page - 1) >= 0) {
+                    page--;
+                }
                 $(".btn").animate({
-                    right: 80
+                    right: 80 * page
                 });
 
                 break;
             case 'right':
-
+                if ((page + 1) <= ($(".btn").length - 4)) {
+                    page++;
+                }
                 $(".btn").animate({
-                    right: 0
+                    right: 80 * page
                 });
                 break;
         }
