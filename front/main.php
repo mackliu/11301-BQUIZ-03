@@ -21,10 +21,16 @@
                     <div class="btn-left"></div>
                 </div>
                 <div class="btns">
-                    <div class="btn">A</div>
-                    <div class="btn">B</div>
-                    <div class="btn">C</div>
-                    <div class="btn">D</div>
+                    <?php
+                    foreach ($posters as $poster) {
+                    ?>
+                        <div class="btn">
+                            <img src="./images/<?= $poster['img']; ?>" alt="">
+                            <div><?= $poster['name']; ?></div>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="control">
                     <div class="btn-right"></div>

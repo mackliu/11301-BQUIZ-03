@@ -73,4 +73,10 @@
 	width:80px;
 	height:100px;
 	position: relative;
+	flex-shrink:0;
+	text-align: center;
+}
+.btns .btn img{
+	width:60px;
+
 }
