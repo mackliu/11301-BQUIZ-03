@@ -48,17 +48,20 @@
         ani()
     }, 3000)
 
-    function ani() {
+    function ani(idx) {
 
-        let ani = parseInt($(".poster").eq(now).data('ani'))
-
-        if (now < $(".poster").length - 1) {
-            next = now + 1;
+        let code = parseInt($(".poster").eq(now).data('ani'))
+        if (idx != undefined) {
+            next = idx;
         } else {
-            next = 0
+            if (now < $(".poster").length - 1) {
+                next = now + 1;
+            } else {
+                next = 0
+            }
         }
         //console.log(ani, now, next)
-        switch (ani) {
+        switch (code) {
             case 1:
                 //淡入淡出
                 $(".poster").eq(now).fadeOut(1000, () => {
@@ -107,6 +110,25 @@
                 });
                 break;
         }
+    })
+
+
+    $(".btns").hover(
+        function() {
+            clearInterval(slide)
+        },
+        function() {
+            slide = setInterval(() => {
+                ani()
+            }, 3000)
+        }
+    )
+
+    $(".btn").on("click", function() {
+        let idx = $(this).index();
+        ani(idx)
+
+        //console.log("next->", idx, "ani->", ani, "now->", visible)
     })
 </script>
 
