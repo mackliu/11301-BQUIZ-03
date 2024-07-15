@@ -9,6 +9,18 @@
                 <div class='name'>預告片1</div>
             </div>
             <div class="controls">
+                <div class="control">
+                    <div class="btn-left"></div>
+                </div>
+                <div class="btns">
+                    <div class="btn">A</div>
+                    <div class="btn">B</div>
+                    <div class="btn">C</div>
+                    <div class="btn">D</div>
+                </div>
+                <div class="control">
+                    <div class="btn-right"></div>
+                </div>
             </div>
         </div>
     </div>
