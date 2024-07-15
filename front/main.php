@@ -83,6 +83,27 @@
         now = next
 
     }
+
+
+    $(".btn-left,.btn-right").on("click", function() {
+        console.log()
+        let direction = $(this).attr('class').split("-")[1]
+        switch (direction) {
+            case 'left':
+
+                $(".btn").animate({
+                    right: 80
+                });
+
+                break;
+            case 'right':
+
+                $(".btn").animate({
+                    right: 0
+                });
+                break;
+        }
+    })
 </script>
 
 
