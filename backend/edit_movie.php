@@ -62,52 +62,25 @@
                     <option value="2025" <?= ($year == 2025) ? 'selected' : ''; ?>>2025</option>
                 </select>年
                 <select name="month">
-                    <option value="01" <?= ($month == '01') ? 'selected' : ''; ?>>01</option>
-                    <option value="02" <?= ($month == '02') ? 'selected' : ''; ?>>02</option>
-                    <option value="03" <?= ($month == '03') ? 'selected' : ''; ?>>03</option>
-                    <option value="04" <?= ($month == '04') ? 'selected' : ''; ?>>04</option>
-                    <option value="05" <?= ($month == '05') ? 'selected' : ''; ?>>05</option>
-                    <option value="06" <?= ($month == '06') ? 'selected' : ''; ?>>06</option>
-                    <option value="07" <?= ($month == '07') ? 'selected' : ''; ?>>07</option>
-                    <option value="08" <?= ($month == '08') ? 'selected' : ''; ?>>08</option>
-                    <option value="09" <?= ($month == '09') ? 'selected' : ''; ?>>09</option>
-                    <option value="10" <?= ($month == '10') ? 'selected' : ''; ?>>10</option>
-                    <option value="11" <?= ($month == '11') ? 'selected' : ''; ?>>11</option>
-                    <option value="12" <?= ($month == '12') ? 'selected' : ''; ?>>12</option>
-
+                    <?php
+                    for ($i = 1; $i <= 12; $i++) {
+                        $selected = ($i == $month) ? "selected" : "";
+                        echo "<option value='$i' $selected>";
+                        echo $i;
+                        echo "</option>";
+                    }
+                    ?>
                 </select>月
                 <select name="day">
-                    <option value="01" <?= ($day == '01') ? 'selected' : ''; ?>>01</option>
-                    <option value="02" <?= ($day == '02') ? 'selected' : ''; ?>>02</option>
-                    <option value="03" <?= ($day == '03') ? 'selected' : ''; ?>>03</option>
-                    <option value="04" <?= ($day == '04') ? 'selected' : ''; ?>>04</option>
-                    <option value="05" <?= ($day == '05') ? 'selected' : ''; ?>>05</option>
-                    <option value="06" <?= ($day == '06') ? 'selected' : ''; ?>>06</option>
-                    <option value="07" <?= ($day == '07') ? 'selected' : ''; ?>>07</option>
-                    <option value="08" <?= ($day == '08') ? 'selected' : ''; ?>>08</option>
-                    <option value="09" <?= ($day == '09') ? 'selected' : ''; ?>>09</option>
-                    <option value="10" <?= ($day == '10') ? 'selected' : ''; ?>>10</option>
-                    <option value="11" <?= ($day == '11') ? 'selected' : ''; ?>>11</option>
-                    <option value="12" <?= ($day == '12') ? 'selected' : ''; ?>>12</option>
-                    <option value="13" <?= ($day == '13') ? 'selected' : ''; ?>>13</option>
-                    <option value="14" <?= ($day == '14') ? 'selected' : ''; ?>>14</option>
-                    <option value="15" <?= ($day == '15') ? 'selected' : ''; ?>>15</option>
-                    <option value="16" <?= ($day == '16') ? 'selected' : ''; ?>>16</option>
-                    <option value="17" <?= ($day == '17') ? 'selected' : ''; ?>>17</option>
-                    <option value="18" <?= ($day == '18') ? 'selected' : ''; ?>>18</option>
-                    <option value="19" <?= ($day == '19') ? 'selected' : ''; ?>>19</option>
-                    <option value="20" <?= ($day == '20') ? 'selected' : ''; ?>>20</option>
-                    <option value="21" <?= ($day == '21') ? 'selected' : ''; ?>>21</option>
-                    <option value="22" <?= ($day == '22') ? 'selected' : ''; ?>>22</option>
-                    <option value="23" <?= ($day == '23') ? 'selected' : ''; ?>>23</option>
-                    <option value="24" <?= ($day == '24') ? 'selected' : ''; ?>>24</option>
-                    <option value="25" <?= ($day == '25') ? 'selected' : ''; ?>>25</option>
-                    <option value="26" <?= ($day == '26') ? 'selected' : ''; ?>>26</option>
-                    <option value="27" <?= ($day == '27') ? 'selected' : ''; ?>>27</option>
-                    <option value="28" <?= ($day == '28') ? 'selected' : ''; ?>>28</option>
-                    <option value="29" <?= ($day == '29') ? 'selected' : ''; ?>>29</option>
-                    <option value="30" <?= ($day == '30') ? 'selected' : ''; ?>>30</option>
-                    <option value="31" <?= ($day == '31') ? 'selected' : ''; ?>>31</option>
+                    <?php
+                    for ($i = 1; $i <= 31; $i++) {
+                        $selected = ($i == $day) ? "selected" : "";
+                        echo "<option value='$i' $selected>";
+                        echo $i;
+                        echo "</option>";
+                    }
+
+                    ?>
                 </select>日
             </div>
             <div>
