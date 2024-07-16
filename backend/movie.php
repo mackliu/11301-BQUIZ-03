@@ -33,7 +33,7 @@
     }
 </style>
 
-<button>新增電影</button>
+<button onclick="location.href='?do=add_movie'">新增電影</button>
 <hr>
 <div class='movie'>
     <div class="img">
@@ -52,7 +52,7 @@
             <button>顯示</button>
             <button>往上</button>
             <button>往下</button>
-            <button>編輯電影</button>
+            <button onclick="location.href='?do=edit_movie'">編輯電影</button>
             <button>刪除電影</button>
         </div>
         <div class="intro">
