@@ -70,9 +70,32 @@
                 break;
             case 2:
                 //縮放
-                $(".poster").eq(now).hide(1000, () => {
-                    $(".poster").eq(next).show(1000)
-
+                $(".poster").eq(now).animate({
+                    width: 0,
+                    height: 0,
+                    top: 105,
+                    left: 140,
+                }, 1000, () => {
+                    $(".poster").eq(now).css({
+                        width: 210,
+                        height: 280,
+                        top: 0,
+                        left: 0,
+                        display: 'none'
+                    })
+                    $(".poster").eq(next).css({
+                        width: 0,
+                        height: 0,
+                        top: 105,
+                        left: 140,
+                        display: 'block'
+                    })
+                    $(".poster").eq(next).animate({
+                        width: 210,
+                        height: 280,
+                        top: 0,
+                        left: 0
+                    }, 1000)
                 })
                 break;
             case 3:
