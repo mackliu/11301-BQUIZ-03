@@ -137,11 +137,39 @@
 <div class="half">
     <h1>院線片清單</h1>
     <div class="rb tab" style="width:95%;">
-        <table>
-            <tbody>
-                <tr> </tr>
-            </tbody>
-        </table>
-        <div class="ct"> </div>
+        <?php
+        $all = $Movie->count(" WHERE ondate >= '2024-07-24' && ondate <='2024-07-26' && sh=1");
+        $div = 4;
+        $pages = ceil($all / $div);
+        $now = $_GET['p'] ?? 1;
+        $start = ($now - 1) * $div;
+        $movies = q("SELECT * FROM `movies` WHERE ondate >= '2024-07-24' && ondate <='2024-07-26' && sh=1 order by rank limit $start,$div");
+        foreach ($movies as $movie) {
+        ?>
+            <div class="movie"><?= $movie['name']; ?></div>
+
+        <?php
+        }
+        ?>
+        <div class="ct">
+            <?php
+            if (($now - 1) > 0) {
+                $prev = $now - 1;
+                echo "<a href='?p=$prev'> < </a>";
+            }
+
+            for ($i = 1; $i <= $pages; $i++) {
+                $size = ($i == $now) ? 'font-size:18px' : '';
+                echo "<a href='?p=$i' style='$size'> $i </a>";
+            }
+
+            if (($now + 1) <= $pages) {
+                $next = $now + 1;
+                echo "<a href='?p=$next'> > </a>";
+            }
+
+
+            ?>
+        </div>
     </div>
 </div>
