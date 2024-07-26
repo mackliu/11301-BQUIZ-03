@@ -138,12 +138,15 @@
     <h1>院線片清單</h1>
     <div class="rb tab" style="width:95%;">
         <?php
-        $all = $Movie->count(" WHERE ondate >= '2024-07-24' && ondate <='2024-07-26' && sh=1");
+        $today = date("Y-m-d");
+        $ondate = date("Y-m-d", strtotime("-2 days"));
+        $all = $Movie->count(" WHERE ondate >= '$ondate' && ondate <='$today' && sh=1");
         $div = 4;
         $pages = ceil($all / $div);
         $now = $_GET['p'] ?? 1;
         $start = ($now - 1) * $div;
-        $movies = q("SELECT * FROM `movies` WHERE ondate >= '2024-07-24' && ondate <='2024-07-26' && sh=1 order by rank limit $start,$div");
+        $movies = q("SELECT * FROM `movies` WHERE ondate >= '$ondate' && ondate <='$today' && sh=1 order by rank limit $start,$div");
+        //$movies = q("SELECT * FROM `movies` WHERE ondate BETWEEN '2024-07-24' AND '2024-07-26' && sh=1 order by rank limit $start,$div");
         foreach ($movies as $movie) {
         ?>
             <div class="movie"><?= $movie['name']; ?></div>
