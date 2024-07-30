@@ -25,7 +25,7 @@
     }
 </style>
 
-<h2 class="ct">線上訂票</h2>
+<h2 class="ct" style="margin:0px 0">線上訂票</h2>
 <div id="menuBlock">
     <form action="#">
         <table id="menu">
@@ -56,9 +56,9 @@
         </table>
     </form>
 </div>
-<div id="booking" style="display:none" onclick="$('#booking,#menuBlock').toggle()">
+<div id="booking" style="display:none">
 
-    <button>上一步</button>
+
 </div>
 
 
@@ -79,13 +79,13 @@
     })
 
     function loadSeats() {
-        let info={
-            id:$("#movie").val(),
-            date:$("#date").val(),
-            session:$("#session").val()
+        let info = {
+            id: $("#movie").val(),
+            date: $("#date").val(),
+            session: $("#session").val()
         }
 
-        $.get("./api/load_seats.php",info,function(seats){
+        $.get("./api/load_seats.php", info, function(seats) {
             $("#booking").html(seats);
             $('#booking,#menuBlock').toggle()
         })
