@@ -32,19 +32,19 @@
             <tr>
                 <td>電影：</td>
                 <td>
-                    <select name="" id="movie"></select>
+                    <select name="movie" id="movie"></select>
                 </td>
             </tr>
             <tr>
                 <td>日期：</td>
                 <td>
-                    <select name="" id="date"></select>
+                    <select name="date" id="date"></select>
                 </td>
             </tr>
             <tr>
                 <td>場次：</td>
                 <td>
-                    <select name="" id="session"></select>
+                    <select name="session" id="session"></select>
                 </td>
             </tr>
             <tr>
@@ -66,12 +66,32 @@
     getMovies();
     let url = new URL(window.location.href);
 
+    $("#movie").on("change", function() {
+        let id = $(this).val();
+
+        getDate(id);
+    })
+
+
+
     function getMovies() {
         $.get("./api/get_movies.php", function(movies) {
             $("#movie").html(movies);
             if (url.searchParams.has('id')) {
                 $(`#movie option[value='${url.searchParams.get('id')}']`).prop('selected', true);
             }
+
+            getDate($("#movie").val());
+
+        })
+    }
+
+    function getDate(id) {
+        $.get("./api/get_dates.php", {
+            id
+        }, function(dates) {
+            $("#date").html(dates);
+
         })
     }
 </script>
