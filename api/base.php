@@ -1,7 +1,12 @@
 <?php
 session_start();
 date_default_timezone_set("Asia/Taipei");
-
+$level = [
+    '1' => '普遍級',
+    '2' => '保護級',
+    '3' => '輔導級',
+    '4' => '限制級',
+];
 class DB
 {
     protected $table;
