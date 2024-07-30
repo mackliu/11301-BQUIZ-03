@@ -72,6 +72,11 @@
         getDate(id);
     })
 
+    $("#date").on('change', function() {
+        let id = $("#movie").val();
+        let date = $(this).val();
+        getSession(id, date);
+    })
 
 
     function getMovies() {
@@ -92,6 +97,17 @@
         }, function(dates) {
             $("#date").html(dates);
 
+            getSession(id, $("#date").val());
         })
+    }
+
+    function getSession(id, date) {
+        $.get("./api/get_session.php", {
+            id,
+            date
+        }, function(session) {
+            $("#session").html(session);
+        })
+
     }
 </script>
