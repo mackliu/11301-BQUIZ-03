@@ -64,10 +64,14 @@
 
 <script>
     getMovies();
+    let url = new URL(window.location.href);
 
     function getMovies() {
         $.get("./api/get_movies.php", function(movies) {
             $("#movie").html(movies);
+            if (url.searchParams.has('id')) {
+                $(`#movie option[value='${url.searchParams.get('id')}']`).prop('selected', true);
+            }
         })
     }
 </script>
