@@ -1,3 +1,4 @@
+<?php include_once "base.php"; ?>
 <style>
     .theater {
         width: 540px;
@@ -37,6 +38,13 @@
         right: 5px;
         bottom: 5px;
     }
+
+    .order-info {
+        width: 540px;
+        padding: 10px;
+        background-color: #eee;
+        margin: auto;
+    }
 </style>
 <div class="theater">
     <div class="seats">
@@ -52,6 +60,13 @@
         ?>
     </div>
 </div>
+<div class="order-info">
 
-
-<button onclick="$('#booking,#menuBlock').toggle()">上一步</button>
+    <div>您選擇的電影是:<?= $Movie->find($_GET['id'])['name']; ?></div>
+    <div>您選擇的時刻是：<?= $_GET['date']; ?> <?= $_GET['session']; ?></div>
+    <div>您已經勾選<span id='tickets'>0</span>張票，最多可以購買四張票</div>
+    <div class='ct'>
+        <button onclick="$('#booking,#menuBlock').toggle()">上一步</button>
+        <button>訂購</button>
+    </div>
+</div>
