@@ -67,19 +67,31 @@
     <div>您已經勾選<span id='tickets'>0</span>張票，最多可以購買四張票</div>
     <div class='ct'>
         <button onclick="$('#booking,#menuBlock').toggle()">上一步</button>
-        <button>訂購</button>
+        <button onclick="order()">訂購</button>
     </div>
 </div>
 
 <script>
-    let seats = new Array()
-
     $(".chk").on("click", function() {
-        if (seats.length < 4) {
-            seats.push($(this).val())
-            $("#tickets").text(seats.length)
+        if ($(this).prop('checked')) {
+
+            if (seats.length < 4) {
+                seats.push($(this).val())
+
+            } else {
+                $(this).prop("checked", false)
+                alert("最多只能選四個座位")
+            }
         } else {
-            alert("最多只能選四個座位")
+            seats.splice(seats.indexOf($(this).val()), 1)
         }
+        $("#tickets").text(seats.length)
     })
+
+    function order() {
+        info['seat'] = seats;
+        $.post("api/order.php", info, function(res) {
+            $("#booking").html(res)
+        })
+    }
 </script>
