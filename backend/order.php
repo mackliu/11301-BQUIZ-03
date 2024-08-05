@@ -96,4 +96,19 @@
             })
         }
     }
+
+    function qDel() {
+        let type = $("input[name='type']:checked").val();
+        let data = $(`#${type}`).val();
+        if (confirm(`確定要刪除所有${type}為${data}的訂單嗎?`)) {
+
+            $.post("./api/qDel.php", {
+                table: "order",
+                type,
+                data
+            }, () => {
+                location.reload();
+            })
+        }
+    }
 </script>
