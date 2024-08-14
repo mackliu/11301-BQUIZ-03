@@ -29,7 +29,7 @@ if (isset($_POST['acc'])) {
     </div>
     <div id="top2">
       <a href="index.php">首頁</a>
-      <a href="?do=order">線上訂票</a>
+      <a href="#">線上訂票</a>
       <a href="#">會員系統</a>
       <a href="admin.php">管理系統</a>
     </div>

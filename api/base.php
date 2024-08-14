@@ -1,7 +1,20 @@
 <?php
 session_start();
 date_default_timezone_set("Asia/Taipei");
+$level = [
+    '1' => '普遍級',
+    '2' => '保護級',
+    '3' => '輔導級',
+    '4' => '限制級',
+];
 
+$times = [
+    1 => '14:00~16:00',
+    2 => '16:00~18:00',
+    3 => '18:00~20:00',
+    4 => '20:00~22:00',
+    5 => '22:00~24:00',
+];
 class DB
 {
     protected $table;
@@ -100,6 +113,27 @@ class DB
         return $this->pdo->query($sql)->fetchColumn();
     }
 
+    public function max(...$arg)
+    {
+        $sql = "select max(`id`) from  `$this->table`";
+
+        if (isset($arg[0])) {
+            if (is_array($arg[0])) {
+                $tmp = $this->a2s($arg[0]);
+                $sql .= " where " . join(" && ", $tmp);
+            } else {
+                $sql .= $arg[0];
+            }
+        }
+
+        if (isset($arg[1])) {
+            $sql .= $arg[1];
+        }
+        //echo $sql;
+
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+
 
     protected function a2s($array)
     {
@@ -118,7 +152,7 @@ function q($sql)
 {
     $dsn = "mysql:host=localhost;charset=utf8;dbname=db06";
     $pdo = new PDO($dsn, 'root', '');
-    return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    return $pdo->query($sql)->fetchAll();
 }
 
 function to($url)
@@ -136,3 +170,5 @@ function dd($array)
 
 
 $Poster = new DB("posters");
+$Movie = new DB("movies");
+$Order = new DB("orders");
